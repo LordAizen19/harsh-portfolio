@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Lightbulb } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -17,60 +17,90 @@ import { useCardTilt } from "@/hooks/useCardTilt";
 gsap.registerPlugin(ScrollTrigger);
 
 const ProjectCard = ({ p }: { p: (typeof projects)[number] }) => {
-  const { ref, handlers } = useCardTilt(8);
+  const { ref, handlers } = useCardTilt(6);
 
   return (
     <div ref={ref} {...handlers} data-project className="will-change-transform">
-      <Card className="h-full border-border bg-card transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10">
-        <CardHeader>
-          <div className="flex items-start justify-between">
-            <div>
-              <CardTitle className="text-xl">{p.name}</CardTitle>
-              <CardDescription className="mt-2">{p.description}</CardDescription>
+      <Card className="h-full border-border bg-card transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 overflow-hidden">
+        <CardHeader className="pb-4">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1">
+              <CardTitle className="text-2xl font-bold tracking-tight">{p.name}</CardTitle>
+              <CardDescription className="mt-3 text-base leading-relaxed">
+                {p.description}
+              </CardDescription>
             </div>
-            <div className="flex gap-2">
-              <Button variant="ghost" size="icon" asChild>
-                <a
-                  href={p.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                >
-                  <Github className="h-4 w-4" />
+            <div className="flex gap-1 flex-shrink-0">
+              <Button variant="ghost" size="icon" asChild className="hover:text-primary">
+                <a href={p.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <Github className="h-5 w-5" />
                 </a>
               </Button>
               {p.demoUrl && (
-                <Button variant="ghost" size="icon" asChild>
-                  <a
-                    href={p.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Demo"
-                  >
-                    <ExternalLink className="h-4 w-4" />
+                <Button variant="ghost" size="icon" asChild className="hover:text-accent">
+                  <a href={p.demoUrl} target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
+                    <ExternalLink className="h-5 w-5" />
                   </a>
                 </Button>
               )}
             </div>
           </div>
         </CardHeader>
-        <CardContent>
-          <ul className="mb-4 list-disc pl-5 text-sm text-muted-foreground space-y-1">
-            {p.features.map((f) => (
-              <li key={f}>{f}</li>
-            ))}
-          </ul>
-          <div className="flex flex-wrap gap-2">
-            {p.techStack.map((t) => (
-              <Badge
-                key={t}
-                variant="secondary"
-                className="font-mono text-xs transition-colors duration-300 hover:bg-primary hover:text-primary-foreground"
-              >
-                {t}
-              </Badge>
-            ))}
+
+        <CardContent className="space-y-6">
+          {/* Features */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-2 font-mono">Features</h4>
+            <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
+              {p.features.map((f) => (
+                <li key={f}>{f}</li>
+              ))}
+            </ul>
           </div>
+
+          {/* Tech Stack */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-2 font-mono">Tech Stack</h4>
+            <div className="flex flex-wrap gap-2">
+              {p.techStack.map((t) => (
+                <Badge
+                  key={t}
+                  variant="secondary"
+                  className="font-mono text-xs transition-colors duration-300 hover:bg-primary hover:text-primary-foreground"
+                >
+                  {t}
+                </Badge>
+              ))}
+            </div>
+          </div>
+
+          {/* What I Learned */}
+          <div className="border-t border-border pt-4">
+            <h4 className="text-sm font-semibold text-foreground mb-2 font-mono flex items-center gap-2">
+              <Lightbulb className="h-4 w-4 text-primary" />
+              What I Learned
+            </h4>
+            <ul className="space-y-1.5">
+              {p.learned.map((l) => (
+                <li key={l} className="text-sm text-muted-foreground flex items-start gap-2">
+                  <span className="text-primary mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                  {l}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Demo Button */}
+          {p.demoUrl && (
+            <div className="pt-2">
+              <Button asChild variant="outline" className="w-full border-primary/30 hover:bg-primary/10 hover:border-primary/60">
+                <a href={p.demoUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  View Live Demo
+                </a>
+              </Button>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
@@ -82,7 +112,6 @@ const Projects = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Slow-motion reveal with 3D rotation
       gsap.from("[data-project]", {
         y: 100,
         opacity: 0,
@@ -117,7 +146,7 @@ const Projects = () => {
           <h3 className="text-3xl font-bold mb-2">Projects</h3>
           <div className="h-[2px] w-16 bg-primary mb-10 origin-left" />
         </div>
-        <div className="grid gap-6" style={{ perspective: "1000px" }}>
+        <div className="grid gap-8" style={{ perspective: "1000px" }}>
           {projects.map((p) => (
             <ProjectCard key={p.name} p={p} />
           ))}

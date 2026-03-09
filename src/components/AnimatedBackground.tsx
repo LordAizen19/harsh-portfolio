@@ -40,7 +40,7 @@ const AnimatedBackground = () => {
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(135deg, hsl(240, 20%, 4%) 0%, hsl(220, 25%, 6%) 50%, hsl(240, 15%, 5%) 100%)",
+          background: "linear-gradient(135deg, hsl(250, 20%, 3%) 0%, hsl(260, 25%, 5%) 50%, hsl(240, 20%, 4%) 100%)",
         }}
       />
 
@@ -51,11 +51,11 @@ const AnimatedBackground = () => {
       >
         <div
           className="absolute -top-[5%] -left-[10%] h-[600px] w-[600px] rounded-full blur-[120px] animate-blob-1"
-          style={{ background: "rgba(59, 130, 246, 0.18)" }}
+          style={{ background: "rgba(139, 92, 246, 0.18)" }}
         />
         <div
           className="absolute top-[60%] -right-[5%] h-[550px] w-[550px] rounded-full blur-[110px] animate-blob-2"
-          style={{ background: "rgba(6, 182, 212, 0.15)" }}
+          style={{ background: "rgba(99, 102, 241, 0.15)" }}
         />
       </div>
 
@@ -66,15 +66,15 @@ const AnimatedBackground = () => {
       >
         <div
           className="absolute top-[20%] right-[15%] h-[500px] w-[500px] rounded-full blur-[100px] animate-blob-3"
-          style={{ background: "rgba(139, 92, 246, 0.12)" }}
+          style={{ background: "rgba(168, 85, 247, 0.14)" }}
         />
         <div
           className="absolute top-[45%] left-[10%] h-[480px] w-[480px] rounded-full blur-[100px] animate-blob-4"
-          style={{ background: "rgba(16, 185, 129, 0.14)" }}
+          style={{ background: "rgba(79, 70, 229, 0.14)" }}
         />
         <div
           className="absolute top-[80%] left-[30%] h-[500px] w-[500px] rounded-full blur-[110px] animate-blob-1"
-          style={{ background: "rgba(59, 130, 246, 0.12)" }}
+          style={{ background: "rgba(124, 58, 237, 0.12)" }}
         />
       </div>
 
@@ -85,15 +85,15 @@ const AnimatedBackground = () => {
       >
         <div
           className="absolute top-[10%] left-[40%] h-[350px] w-[350px] rounded-full blur-[80px] animate-blob-2"
-          style={{ background: "rgba(34, 211, 238, 0.1)" }}
+          style={{ background: "rgba(99, 102, 241, 0.1)" }}
         />
         <div
           className="absolute top-[55%] right-[25%] h-[300px] w-[300px] rounded-full blur-[70px] animate-blob-4"
-          style={{ background: "rgba(168, 85, 247, 0.08)" }}
+          style={{ background: "rgba(139, 92, 246, 0.1)" }}
         />
         <div
           className="absolute top-[85%] right-[10%] h-[400px] w-[400px] rounded-full blur-[90px] animate-blob-3"
-          style={{ background: "rgba(6, 182, 212, 0.1)" }}
+          style={{ background: "rgba(79, 70, 229, 0.1)" }}
         />
       </div>
 
@@ -126,7 +126,7 @@ const AnimatedBackground = () => {
       {/* Top edge glow */}
       <div
         className="absolute -top-20 left-1/2 -translate-x-1/2 h-40 w-[800px] rounded-full blur-[100px] opacity-30"
-        style={{ background: "rgba(59, 130, 246, 0.15)" }}
+        style={{ background: "rgba(139, 92, 246, 0.15)" }}
       />
     </div>
   );
