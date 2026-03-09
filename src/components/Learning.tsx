@@ -1,15 +1,22 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Rocket } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const items = [
+const currentItems = [
   "FastAPI",
   "PostgreSQL",
-  "Backend System Design",
-  "Distributed Systems",
+  "Redis",
+  "Celery",
+  "ReactJS",
+  "TypeScript",
+];
+
+const futureItems = [
+  "AWS",
+  "DevOps",
 ];
 
 const Learning = () => {
@@ -25,7 +32,6 @@ const Learning = () => {
         scrollTrigger: { trigger: ref.current, start: "top 80%" },
       });
 
-      // Cards wobble in from alternating sides
       gsap.from("[data-learn]", {
         x: (i) => (i % 2 === 0 ? -60 : 60),
         y: 30,
@@ -35,6 +41,15 @@ const Learning = () => {
         stagger: 0.15,
         ease: "elastic.out(1, 0.6)",
         scrollTrigger: { trigger: ref.current, start: "top 75%" },
+      });
+
+      gsap.from("[data-future]", {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: { trigger: "[data-future-heading]", start: "top 85%" },
       });
     }, ref);
     return () => ctx.revert();
@@ -48,8 +63,8 @@ const Learning = () => {
           <h3 className="text-3xl font-bold mb-2">Currently Learning</h3>
           <div className="h-[2px] w-16 bg-primary mb-10 origin-left" />
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {items.map((item) => (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {currentItems.map((item) => (
             <div
               key={item}
               data-learn
@@ -60,6 +75,28 @@ const Learning = () => {
               <span className="ml-auto inline-block h-2.5 w-2.5 rounded-full bg-primary animate-pulse" />
             </div>
           ))}
+        </div>
+
+        {/* Future / Soon */}
+        <div className="mt-14" data-future-heading>
+          <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
+            <Rocket className="h-5 w-5 text-accent" />
+            Coming Soon
+          </h3>
+          <p className="text-muted-foreground text-sm mb-6">Technologies I plan to learn next</p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {futureItems.map((item) => (
+              <div
+                key={item}
+                data-future
+                className="flex items-center gap-3 rounded-lg border border-dashed border-accent/40 bg-accent/5 p-5 transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 cursor-default"
+              >
+                <Rocket className="h-5 w-5 text-accent shrink-0" />
+                <span className="text-sm font-medium">{item}</span>
+                <span className="ml-auto font-mono text-xs text-accent/60">soon</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
