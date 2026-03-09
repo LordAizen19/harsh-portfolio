@@ -87,13 +87,6 @@ const Hero = () => {
         }}
       />
 
-      {/* Grid pattern background */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
 
       <div className="relative z-10 max-w-2xl text-center">
         <p data-hero-line className="font-mono text-sm text-primary mb-4">
