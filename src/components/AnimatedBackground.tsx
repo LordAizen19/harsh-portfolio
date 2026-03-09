@@ -85,7 +85,7 @@ const AnimatedBackground = () => {
       >
         <div
           className="absolute top-[10%] left-[40%] h-[350px] w-[350px] rounded-full blur-[80px] animate-blob-2"
-          style={{ background: "rgba(34, 211, 238, 0.1)" }}
+          style={{ background: "rgba(99, 102, 241, 0.1)" }}
         />
         <div
           className="absolute top-[55%] right-[25%] h-[300px] w-[300px] rounded-full blur-[70px] animate-blob-4"
