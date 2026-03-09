@@ -19,7 +19,7 @@ export const projects: Project[] = [
       "AI-powered productivity summaries",
       "Weekly and monthly statistics dashboard",
     ],
-    techStack: ["React", "TypeScript", "Supabase", "Tailwind CSS", "FastAPI"],
+    techStack: ["React", "TypeScript", "Supabase", "Tailwind CSS"],
     learned: [
       "Real-time database subscriptions with Supabase",
       "Gamification patterns for user engagement",
