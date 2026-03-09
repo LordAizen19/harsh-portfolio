@@ -128,6 +128,18 @@ const AnimatedBackground = () => {
         className="absolute -top-20 left-1/2 -translate-x-1/2 h-40 w-[800px] rounded-full blur-[100px] opacity-30"
         style={{ background: "rgba(139, 92, 246, 0.15)" }}
       />
+
+      {/* Bottom-right vivid glow to mimic reference image sweep */}
+      <div
+        className="absolute bottom-0 right-0 h-[60vh] w-[60vw] rounded-full blur-[150px] opacity-40"
+        style={{ background: "radial-gradient(circle, hsl(280, 90%, 50%) 0%, hsl(260, 80%, 40%) 40%, transparent 70%)" }}
+      />
+
+      {/* Top-left blue accent glow */}
+      <div
+        className="absolute -top-[10%] -left-[5%] h-[50vh] w-[40vw] rounded-full blur-[130px] opacity-25"
+        style={{ background: "radial-gradient(circle, hsl(220, 80%, 50%) 0%, transparent 70%)" }}
+      />
     </div>
   );
 };
