@@ -23,36 +23,44 @@ const Learning = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Safety fallback: ensure items are visible even if ScrollTrigger fails
+    const fallback = setTimeout(() => {
+      ref.current?.querySelectorAll("[data-learn], [data-future], [data-learn-heading]").forEach((el) => {
+        (el as HTMLElement).style.opacity = "1";
+        (el as HTMLElement).style.transform = "none";
+      });
+    }, 2000);
+
     const ctx = gsap.context(() => {
       gsap.from("[data-learn-heading]", {
         x: -60,
-        opacity: 0,
+        autoAlpha: 0,
         duration: 1,
         ease: "power3.out",
-        scrollTrigger: { trigger: ref.current, start: "top 80%" },
+        scrollTrigger: { trigger: ref.current, start: "top 80%", toggleActions: "play none none none" },
       });
 
       gsap.from("[data-learn]", {
         x: (i) => (i % 2 === 0 ? -60 : 60),
         y: 30,
-        opacity: 0,
+        autoAlpha: 0,
         rotation: (i) => (i % 2 === 0 ? -5 : 5),
         duration: 1,
         stagger: 0.15,
         ease: "elastic.out(1, 0.6)",
-        scrollTrigger: { trigger: ref.current, start: "top 75%" },
+        scrollTrigger: { trigger: ref.current, start: "top 75%", toggleActions: "play none none none" },
       });
 
       gsap.from("[data-future]", {
         y: 40,
-        opacity: 0,
+        autoAlpha: 0,
         duration: 1,
         stagger: 0.2,
         ease: "power3.out",
-        scrollTrigger: { trigger: "[data-future-heading]", start: "top 85%" },
+        scrollTrigger: { trigger: "[data-future-heading]", start: "top 85%", toggleActions: "play none none none" },
       });
     }, ref);
-    return () => ctx.revert();
+    return () => { clearTimeout(fallback); ctx.revert(); };
   }, []);
 
   return (
