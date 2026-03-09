@@ -126,7 +126,7 @@ const AnimatedBackground = () => {
       {/* Top edge glow */}
       <div
         className="absolute -top-20 left-1/2 -translate-x-1/2 h-40 w-[800px] rounded-full blur-[100px] opacity-30"
-        style={{ background: "rgba(59, 130, 246, 0.15)" }}
+        style={{ background: "rgba(139, 92, 246, 0.15)" }}
       />
     </div>
   );
