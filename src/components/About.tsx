@@ -51,15 +51,14 @@ const About = () => {
           />
         </div>
         <p data-about-text className="text-muted-foreground leading-relaxed mb-4 text-lg">
-          I'm a software developer with a strong interest in backend engineering,
-          API development, and building scalable software systems. I enjoy
-          working with Python, TypeScript, and modern frameworks to create
-          efficient solutions.
+          I'm a Python developer passionate about building production-ready APIs
+          using FastAPI. I love creating efficient backend systems with clean
+          architecture while ensuring the frontend stays minimal and elegant.
         </p>
         <p data-about-text className="text-muted-foreground leading-relaxed text-lg">
-          My current focus areas include system design, distributed systems, and
-          building production-ready APIs. I'm always looking to learn new
-          technologies and improve my craft as an engineer.
+          My focus areas include API development, system design, and crafting
+          smooth user experiences. I'm always exploring new tools and patterns
+          to build better software.
         </p>
       </div>
     </section>
