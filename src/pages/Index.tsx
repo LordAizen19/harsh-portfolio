@@ -6,11 +6,13 @@ import Projects from "@/components/Projects";
 import Learning from "@/components/Learning";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 const Index = () => (
   <>
+    <AnimatedBackground />
     <Navbar />
-    <main>
+    <main className="relative z-10">
       <Hero />
       <About />
       <Skills />
