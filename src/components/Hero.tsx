@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Github, Linkedin, FileText } from "lucide-react";
+import { Github, Linkedin, FileText, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import gsap from "gsap";
 
@@ -11,7 +11,6 @@ const Hero = () => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-      // Dramatic staggered entrance
       tl.from("[data-hero-line]", {
         y: 80,
         opacity: 0,
@@ -31,6 +30,17 @@ const Hero = () => {
           "-=0.4"
         )
         .from(
+          "[data-hero-image]",
+          {
+            scale: 0.7,
+            opacity: 0,
+            x: 60,
+            duration: 1.2,
+            ease: "power3.out",
+          },
+          "-=1"
+        )
+        .from(
           "[data-hero-glow]",
           {
             scale: 0.5,
@@ -41,7 +51,6 @@ const Hero = () => {
           0
         );
 
-      // Floating wobble on the name
       gsap.to("[data-hero-name]", {
         y: -8,
         duration: 2.5,
@@ -53,7 +62,6 @@ const Hero = () => {
     return () => ctx.revert();
   }, []);
 
-  // Cursor-following glow
   useEffect(() => {
     const handleMouse = (e: MouseEvent) => {
       if (!cursorGlow.current || !containerRef.current) return;
@@ -74,7 +82,7 @@ const Hero = () => {
     <section
       id="home"
       ref={containerRef}
-      className="relative flex min-h-screen items-center justify-center px-6 pt-20 overflow-hidden"
+      className="relative flex min-h-screen items-center px-6 pt-20 overflow-hidden"
     >
       {/* Ambient glow */}
       <div
@@ -87,57 +95,63 @@ const Hero = () => {
         }}
       />
 
+      <div className="relative z-10 mx-auto max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Left side — Name, description, buttons */}
+        <div>
+          <p data-hero-line className="font-mono text-sm text-primary mb-4">
+            Hi, my name is
+          </p>
+          <h1
+            data-hero-line
+            data-hero-name
+            className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
+          >
+            Harsh Patel
+          </h1>
+          <p data-hero-line className="mt-4 text-xl text-muted-foreground sm:text-2xl">
+            Python Developer &amp; FastAPI Engineer
+          </p>
+          <p data-hero-line className="mt-6 max-w-lg text-muted-foreground">
+            I love working in Python and building amazing production-ready APIs using FastAPI,
+            while keeping the UI clean, minimal, and smooth.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div data-hero-btn>
+              <Button asChild size="lg">
+                <a href="#contact">
+                  <FileText className="mr-2 h-4 w-4" />
+                  Resume
+                </a>
+              </Button>
+            </div>
+            <div data-hero-btn>
+              <Button variant="outline" size="icon" asChild className="h-11 w-11">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <Github className="h-5 w-5" />
+                </a>
+              </Button>
+            </div>
+            <div data-hero-btn>
+              <Button variant="outline" size="icon" asChild className="h-11 w-11">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <Linkedin className="h-5 w-5" />
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
 
-      <div className="relative z-10 max-w-2xl text-center">
-        <p data-hero-line className="font-mono text-sm text-primary mb-4">
-          Hi, my name is
-        </p>
-        <h1
-          data-hero-line
-          data-hero-name
-          className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
-        >
-          Harsh Patel
-        </h1>
-        <p data-hero-line className="mt-4 text-xl text-muted-foreground sm:text-2xl">
-          Python Developer &amp; FastAPI Engineer
-        </p>
-        <p data-hero-line className="mt-6 max-w-lg mx-auto text-muted-foreground">
-          I love working in Python and building amazing production-ready APIs using FastAPI,
-          while keeping the UI clean, minimal, and smooth.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <div data-hero-btn>
-            <Button asChild size="lg">
-              <a href="#contact">
-                <FileText className="mr-2 h-4 w-4" />
-                Resume
-              </a>
-            </Button>
-          </div>
-          <div data-hero-btn>
-            <Button variant="outline" size="icon" asChild className="h-11 w-11">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-            </Button>
-          </div>
-          <div data-hero-btn>
-            <Button variant="outline" size="icon" asChild className="h-11 w-11">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-            </Button>
+        {/* Right side — Image placeholder */}
+        <div data-hero-image className="flex justify-center lg:justify-end">
+          <div className="relative group">
+            {/* Glowing border frame */}
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary via-accent to-primary opacity-50 blur-sm group-hover:opacity-80 transition-opacity duration-700" />
+            <div className="relative w-64 h-72 sm:w-72 sm:h-80 rounded-2xl border-2 border-primary/30 bg-card/80 backdrop-blur-sm flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:border-primary/60 group-hover:shadow-2xl group-hover:shadow-primary/20">
+              {/* Replace the User icon with an <img> tag when you have your photo */}
+              <User className="h-20 w-20 text-muted-foreground/30" />
+            </div>
+            {/* Decorative offset border */}
+            <div className="absolute -bottom-3 -right-3 w-64 h-72 sm:w-72 sm:h-80 rounded-2xl border-2 border-accent/20 -z-10 transition-all duration-500 group-hover:border-accent/40" />
           </div>
         </div>
       </div>
