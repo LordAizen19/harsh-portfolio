@@ -40,7 +40,7 @@ const AnimatedBackground = () => {
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(135deg, hsl(240, 20%, 4%) 0%, hsl(220, 25%, 6%) 50%, hsl(240, 15%, 5%) 100%)",
+          background: "linear-gradient(135deg, hsl(250, 20%, 3%) 0%, hsl(260, 25%, 5%) 50%, hsl(240, 20%, 4%) 100%)",
         }}
       />
 
