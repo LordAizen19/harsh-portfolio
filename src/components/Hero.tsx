@@ -97,14 +97,14 @@ const Hero = () => {
           data-hero-name
           className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
         >
-          John Doe
+          Harsh Patel
         </h1>
         <p data-hero-line className="mt-4 text-xl text-muted-foreground sm:text-2xl">
-          Backend Engineer &amp; Software Developer
+          Python Developer &amp; FastAPI Engineer
         </p>
         <p data-hero-line className="mt-6 max-w-lg mx-auto text-muted-foreground">
-          I build reliable backend systems, APIs, and scalable software.
-          Passionate about system design and clean architecture.
+          I love working in Python and building amazing production-ready APIs using FastAPI,
+          while keeping the UI clean, minimal, and smooth.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <div data-hero-btn>
