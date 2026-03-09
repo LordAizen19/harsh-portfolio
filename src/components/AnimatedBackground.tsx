@@ -36,11 +36,11 @@ const AnimatedBackground = () => {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-      {/* Base dark gradient */}
+      {/* Base dark gradient — sweeps from dark to vivid purple/blue like the reference */}
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(135deg, hsl(250, 20%, 3%) 0%, hsl(260, 25%, 5%) 50%, hsl(240, 20%, 4%) 100%)",
+          background: "linear-gradient(135deg, hsl(250, 20%, 3%) 0%, hsl(260, 30%, 8%) 35%, hsl(270, 60%, 18%) 65%, hsl(280, 80%, 35%) 85%, hsl(260, 90%, 45%) 100%)",
         }}
       />
 
