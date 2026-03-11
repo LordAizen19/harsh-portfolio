@@ -35,12 +35,21 @@ export function useCardTilt(intensity = 15) {
   const onMouseLeave = useCallback(() => {
     const el = ref.current;
     if (!el) return;
-    gsap.to(el, {
+    const randomRot = (Math.random() - 0.5) * 6;
+    const tl = gsap.timeline();
+    tl.to(el, {
+      scale: 0.95,
+      rotateX: randomRot,
+      rotateY: -randomRot,
+      duration: 0.15,
+      ease: "power2.in",
+      transformPerspective: 800,
+    }).to(el, {
+      scale: 1,
       rotateX: 0,
       rotateY: 0,
-      scale: 1,
-      duration: 0.6,
-      ease: "elastic.out(1, 0.4)",
+      duration: 0.8,
+      ease: "elastic.out(1, 0.3)",
     });
   }, []);
 
