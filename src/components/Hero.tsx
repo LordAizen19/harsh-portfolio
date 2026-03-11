@@ -144,10 +144,33 @@ const Hero = () => {
         {/* Right side — Image placeholder */}
         <div data-hero-image className="flex justify-center lg:justify-end">
           <div className="relative group">
-            {/* Glowing border frame */}
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary via-accent to-primary opacity-50 blur-sm group-hover:opacity-80 transition-opacity duration-700" />
+            {/* Glowing border frame with pulse */}
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary via-accent to-primary opacity-50 blur-sm group-hover:opacity-80 transition-opacity duration-700 animate-glow-pulse" />
+
+            {/* Orbiting dots */}
+            <div className="absolute -inset-8 animate-orbit-slow pointer-events-none">
+              <div className="absolute top-0 left-1/2 h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_8px_hsl(var(--primary))]" />
+            </div>
+            <div className="absolute -inset-10 animate-orbit-medium pointer-events-none" style={{ animationDirection: "reverse" }}>
+              <div className="absolute bottom-0 right-1/4 h-2 w-2 rounded-full bg-accent shadow-[0_0_8px_hsl(var(--accent))]" />
+            </div>
+            <div className="absolute -inset-6 animate-orbit-fast pointer-events-none">
+              <div className="absolute top-1/4 right-0 h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_6px_hsl(var(--primary))]" />
+            </div>
+
+            {/* Pulse rings */}
+            <div className="absolute inset-0 rounded-2xl border-2 border-primary/40 animate-pulse-ring pointer-events-none" />
+            <div className="absolute inset-0 rounded-2xl border-2 border-accent/30 animate-pulse-ring pointer-events-none" style={{ animationDelay: "1.5s" }} />
+
+            {/* Floating particles */}
+            <div className="absolute -inset-4 pointer-events-none overflow-visible">
+              <div className="absolute bottom-0 left-[20%] h-1.5 w-1.5 rounded-full bg-primary/60 animate-float-up" />
+              <div className="absolute bottom-0 left-[50%] h-1 w-1 rounded-full bg-accent/60 animate-float-up" style={{ animationDelay: "1s" }} />
+              <div className="absolute bottom-0 left-[75%] h-1.5 w-1.5 rounded-full bg-primary/40 animate-float-up" style={{ animationDelay: "2s" }} />
+              <div className="absolute bottom-0 left-[35%] h-1 w-1 rounded-full bg-accent/50 animate-float-up" style={{ animationDelay: "0.5s" }} />
+            </div>
+
             <div className="relative w-64 h-72 sm:w-72 sm:h-80 rounded-2xl border-2 border-primary/30 bg-card/80 backdrop-blur-sm flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:border-primary/60 group-hover:shadow-2xl group-hover:shadow-primary/20">
-              {/* Replace the User icon with an <img> tag when you have your photo */}
               <User className="h-20 w-20 text-muted-foreground/30" />
             </div>
             {/* Decorative offset border */}
