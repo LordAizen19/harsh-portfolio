@@ -48,7 +48,7 @@ const Learning = () => {
         duration: 1,
         stagger: 0.15,
         ease: "elastic.out(1, 0.6)",
-        scrollTrigger: { trigger: ref.current, start: "top 75%", toggleActions: "play none none none" },
+        scrollTrigger: { trigger: ref.current, start: "top 75%", toggleActions: "restart none none reverse" },
       });
 
       gsap.from("[data-future]", {
