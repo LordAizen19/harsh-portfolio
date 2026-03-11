@@ -37,7 +37,7 @@ const Learning = () => {
         autoAlpha: 0,
         duration: 1,
         ease: "power3.out",
-        scrollTrigger: { trigger: ref.current, start: "top 80%", toggleActions: "play none none none" },
+        scrollTrigger: { trigger: ref.current, start: "top 80%", toggleActions: "restart none none reverse" },
       });
 
       gsap.from("[data-learn]", {
