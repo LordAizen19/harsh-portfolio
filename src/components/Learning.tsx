@@ -57,7 +57,7 @@ const Learning = () => {
         duration: 1,
         stagger: 0.2,
         ease: "power3.out",
-        scrollTrigger: { trigger: "[data-future-heading]", start: "top 85%", toggleActions: "play none none none" },
+        scrollTrigger: { trigger: "[data-future-heading]", start: "top 85%", toggleActions: "restart none none reverse" },
       });
     }, ref);
     return () => { clearTimeout(fallback); ctx.revert(); };
