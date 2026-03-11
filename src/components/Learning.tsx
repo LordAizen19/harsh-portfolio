@@ -37,7 +37,7 @@ const Learning = () => {
         autoAlpha: 0,
         duration: 1,
         ease: "power3.out",
-        scrollTrigger: { trigger: ref.current, start: "top 80%", toggleActions: "play none none none" },
+        scrollTrigger: { trigger: ref.current, start: "top 80%", toggleActions: "restart none none reverse" },
       });
 
       gsap.from("[data-learn]", {
@@ -48,7 +48,7 @@ const Learning = () => {
         duration: 1,
         stagger: 0.15,
         ease: "elastic.out(1, 0.6)",
-        scrollTrigger: { trigger: ref.current, start: "top 75%", toggleActions: "play none none none" },
+        scrollTrigger: { trigger: ref.current, start: "top 75%", toggleActions: "restart none none reverse" },
       });
 
       gsap.from("[data-future]", {
@@ -57,7 +57,7 @@ const Learning = () => {
         duration: 1,
         stagger: 0.2,
         ease: "power3.out",
-        scrollTrigger: { trigger: "[data-future-heading]", start: "top 85%", toggleActions: "play none none none" },
+        scrollTrigger: { trigger: "[data-future-heading]", start: "top 85%", toggleActions: "restart none none reverse" },
       });
     }, ref);
     return () => { clearTimeout(fallback); ctx.revert(); };
